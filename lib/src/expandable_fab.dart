@@ -79,6 +79,7 @@ class ExpandableFab extends StatefulWidget {
     this.onClose,
     this.afterClose,
     this.overlayStyle,
+    this.menuKey,
   }) : super(key: key);
 
   /// Distance from children.
@@ -125,6 +126,8 @@ class ExpandableFab extends StatefulWidget {
 
   /// Provides the style for overlay. No overlay when null.
   final ExpandableFabOverlayStyle? overlayStyle;
+
+  final Key? menuKey;
 
   @override
   State<ExpandableFab> createState() => ExpandableFabState();
@@ -340,6 +343,7 @@ class ExpandableFabState extends State<ExpandableFab>
     final transformValues = _closeButtonBuilder.size / _openButtonBuilder.size;
 
     return IgnorePointer(
+      key: widget.menuKey,
       ignoring: _open,
       child: AnimatedContainer(
         transformAlignment: Alignment.center,
